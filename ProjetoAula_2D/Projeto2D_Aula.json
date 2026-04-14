@@ -1,7 +1,7 @@
 {
   "firstLayout": "",
   "gdVersion": {
-    "build": 265,
+    "build": 260,
     "major": 5,
     "minor": 6,
     "revision": 0
@@ -53,6 +53,7 @@
     "authorUsernames": [],
     "categories": [],
     "playableDevices": [
+      "mobile",
       "mobile"
     ],
     "extensionProperties": [],
@@ -797,7 +798,7 @@
         "gridColor": 10401023,
         "gridAlpha": 0.8,
         "snap": true,
-        "zoomFactor": 0.4335774304702383,
+        "zoomFactor": 0.9610368693714736,
         "windowMask": false,
         "selectedLayer": "",
         "gameEditorMode": "instances-editor"
@@ -1234,6 +1235,22 @@
           "numberProperties": [],
           "stringProperties": [],
           "initialVariables": []
+        },
+        {
+          "angle": 0,
+          "customSize": false,
+          "height": 0,
+          "keepRatio": true,
+          "layer": "",
+          "name": "TimeScore",
+          "persistentUuid": "ebe0231a-1e5d-4c1e-a2d6-cc7c4800c412",
+          "width": 0,
+          "x": 1058,
+          "y": 44,
+          "zOrder": 9,
+          "numberProperties": [],
+          "stringProperties": [],
+          "initialVariables": []
         }
       ],
       "objects": [
@@ -1309,11 +1326,11 @@
               "WasJumpKeyReleased": false
             },
             {
-              "gravity": 1000,
               "isFolded": true,
-              "jumpSpeed": 600,
               "name": "PlatformerObject",
               "type": "PlatformBehavior::PlatformerObjectBehavior",
+              "gravity": 1000,
+              "jumpSpeed": 600,
               "acceleration": 1500,
               "canGoDownFromJumpthru": true,
               "canGrabPlatforms": false,
@@ -4746,10 +4763,10 @@
           "effects": [],
           "behaviors": [
             {
-              "canBeGrabbed": false,
               "name": "Platform",
-              "platformType": "NormalPlatform",
               "type": "PlatformBehavior::PlatformBehavior",
+              "canBeGrabbed": false,
+              "platformType": "NormalPlatform",
               "yGrabOffset": 0
             }
           ],
@@ -4816,6 +4833,56 @@
           "effects": [],
           "behaviors": [],
           "animations": []
+        },
+        {
+          "assetStoreId": "",
+          "bold": false,
+          "italic": false,
+          "name": "TimeScore",
+          "persistentUuid": "69aa366c-df1c-459a-8463-523f27c63064",
+          "smoothed": true,
+          "type": "TextObject::Text",
+          "underlined": false,
+          "variables": [
+            {
+              "name": "Tempo",
+              "type": "number",
+              "value": 0
+            }
+          ],
+          "effects": [],
+          "behaviors": [],
+          "string": "Tempo: 00:00",
+          "font": "DePixelHalbfett.otf",
+          "textAlignment": "left",
+          "characterSize": 20,
+          "color": {
+            "b": 255,
+            "g": 255,
+            "r": 255
+          },
+          "content": {
+            "bold": false,
+            "isOutlineEnabled": true,
+            "isShadowEnabled": false,
+            "italic": false,
+            "outlineColor": "0;0;0",
+            "outlineThickness": 2,
+            "shadowAngle": 90,
+            "shadowBlurRadius": 2,
+            "shadowColor": "0;0;0",
+            "shadowDistance": 4,
+            "shadowOpacity": 127,
+            "smoothed": true,
+            "underlined": false,
+            "text": "Tempo: 00:00",
+            "font": "DePixelHalbfett.otf",
+            "textAlignment": "left",
+            "verticalTextAlignment": "top",
+            "characterSize": 20,
+            "lineHeight": 0,
+            "color": "255;255;255"
+          }
         }
       ],
       "objectsFolderStructure": {
@@ -4862,6 +4929,9 @@
           },
           {
             "objectName": "NewSprite6"
+          },
+          {
+            "objectName": "TimeScore"
           }
         ]
       },
@@ -4898,6 +4968,47 @@
                 "Animation",
                 "=",
                 "Player.Lives"
+              ]
+            }
+          ]
+        },
+        {
+          "type": "BuiltinCommonInstructions::Standard",
+          "conditions": [
+            {
+              "type": {
+                "value": "SceneJustBegins"
+              },
+              "parameters": [
+                ""
+              ]
+            }
+          ],
+          "actions": [
+            {
+              "type": {
+                "value": "ResetTimer"
+              },
+              "parameters": [
+                "",
+                "\"tempoFase\""
+              ]
+            }
+          ]
+        },
+        {
+          "type": "BuiltinCommonInstructions::Standard",
+          "conditions": [],
+          "actions": [
+            {
+              "type": {
+                "value": "TextContainerCapability::TextContainerBehavior::SetValue"
+              },
+              "parameters": [
+                "TimeScore",
+                "Text",
+                "=",
+                "\"Tempo: \" + ToString(floor(TimerElapsedTime(\"tempoFase\")))"
               ]
             }
           ]
@@ -5816,18 +5927,12 @@
       "globalVariables": [],
       "sceneVariables": [],
       "eventsFunctions": [],
-      "eventsFunctionsFolderStructure": {
-        "folderName": "__ROOT"
-      },
       "eventsBasedBehaviors": [
         {
           "description": "Let platformer characters jump shortly after leaving a platform and also jump in mid-air.",
           "fullName": "Coyote time and air jump",
-          "helpPath": "",
-          "iconUrl": "",
           "name": "AdvancedJump",
           "objectType": "",
-          "previewIconUrl": "",
           "eventsFunctions": [
             {
               "fullName": "",
@@ -7349,60 +7454,6 @@
               "objectGroups": []
             }
           ],
-          "eventsFunctionsFolderStructure": {
-            "folderName": "__ROOT",
-            "children": [
-              {
-                "functionName": "doStepPreEvents"
-              },
-              {
-                "functionName": "onCreated"
-              },
-              {
-                "functionName": "onDeActivate"
-              },
-              {
-                "functionName": "onActivate"
-              },
-              {
-                "folderName": "Coyote time",
-                "children": [
-                  {
-                    "functionName": "SetCoyoteTime"
-                  },
-                  {
-                    "functionName": "CanCoyoteJump"
-                  },
-                  {
-                    "functionName": "UpdateWasInTheAir"
-                  }
-                ]
-              },
-              {
-                "folderName": "Air jump",
-                "children": [
-                  {
-                    "functionName": "AirJumpsMax"
-                  },
-                  {
-                    "functionName": "RemainingAirJumps"
-                  },
-                  {
-                    "functionName": "SetAirJumpCountMaximum"
-                  },
-                  {
-                    "functionName": "RemoveOneRemainingAirJump"
-                  },
-                  {
-                    "functionName": "ResetAirJumpCounter"
-                  },
-                  {
-                    "functionName": "AreFloorJumpCountedAsAirJump"
-                  }
-                ]
-              }
-            ]
-          },
           "propertyDescriptors": [
             {
               "value": "",
@@ -7512,11 +7563,8 @@
         {
           "description": "Let platformer characters jump and slide against walls.",
           "fullName": "Wall jump",
-          "helpPath": "",
-          "iconUrl": "",
           "name": "WallJump",
           "objectType": "",
-          "previewIconUrl": "",
           "eventsFunctions": [
             {
               "fullName": "",
@@ -10112,101 +10160,6 @@
               "objectGroups": []
             }
           ],
-          "eventsFunctionsFolderStructure": {
-            "folderName": "__ROOT",
-            "children": [
-              {
-                "functionName": "doStepPreEvents"
-              },
-              {
-                "functionName": "HasJustWallJumped"
-              },
-              {
-                "functionName": "IsWallJumping"
-              },
-              {
-                "functionName": "IsAgaintWall"
-              },
-              {
-                "folderName": "Private",
-                "children": [
-                  {
-                    "functionName": "RememberIsAgainstWall"
-                  },
-                  {
-                    "functionName": "ForgetIsAgainstWall"
-                  },
-                  {
-                    "functionName": "WasAgainstWall"
-                  },
-                  {
-                    "functionName": "RememberJumpKeyPressed"
-                  },
-                  {
-                    "functionName": "ForgetJumpKeyPressed"
-                  },
-                  {
-                    "functionName": "WasJumpKeyPressed"
-                  },
-                  {
-                    "functionName": "ToggleSideSpeed"
-                  },
-                  {
-                    "functionName": "SlideOnWall"
-                  },
-                  {
-                    "functionName": "AbsorbFallingSpeed"
-                  }
-                ]
-              },
-              {
-                "folderName": "Wall jump configuration",
-                "children": [
-                  {
-                    "functionName": "JumpTimeFrame"
-                  },
-                  {
-                    "functionName": "SetJumpTimeFrame"
-                  },
-                  {
-                    "functionName": "WallJumpSpeedX"
-                  },
-                  {
-                    "functionName": "SetWallJumpSpeedX"
-                  },
-                  {
-                    "functionName": "WallJumpAccelerationX"
-                  },
-                  {
-                    "functionName": "SetWallJumpAccelerationX"
-                  }
-                ]
-              },
-              {
-                "folderName": "Wall sliding configuration",
-                "children": [
-                  {
-                    "functionName": "WallSlidingGravity"
-                  },
-                  {
-                    "functionName": "SetWallSlidingGravity"
-                  },
-                  {
-                    "functionName": "WallSlidingMaxFallingSpeed"
-                  },
-                  {
-                    "functionName": "SetWallSlidingMaxFallingSpeed"
-                  },
-                  {
-                    "functionName": "WallSlidingSpeedAbsorption"
-                  },
-                  {
-                    "functionName": "SetWallSlidingSpeedAbsorption"
-                  }
-                ]
-              }
-            ]
-          },
           "propertyDescriptors": [
             {
               "value": "",
@@ -10432,11 +10385,8 @@
         {
           "description": "Make platformer characters dash toward the floor.",
           "fullName": "Dive dash",
-          "helpPath": "",
-          "iconUrl": "",
           "name": "DiveDash",
           "objectType": "",
-          "previewIconUrl": "",
           "eventsFunctions": [
             {
               "fullName": "",
@@ -10749,23 +10699,6 @@
               "objectGroups": []
             }
           ],
-          "eventsFunctionsFolderStructure": {
-            "folderName": "__ROOT",
-            "children": [
-              {
-                "functionName": "doStepPreEvents"
-              },
-              {
-                "functionName": "SimulateDiveKey"
-              },
-              {
-                "functionName": "CanDive"
-              },
-              {
-                "functionName": "IsDiving"
-              }
-            ]
-          },
           "propertyDescriptors": [
             {
               "value": "",
@@ -10843,11 +10776,8 @@
         {
           "description": "Make platformer characters dash horizontally.",
           "fullName": "Horizontal dash",
-          "helpPath": "",
-          "iconUrl": "",
           "name": "HorizontalDash",
           "objectType": "",
-          "previewIconUrl": "",
           "eventsFunctions": [
             {
               "fullName": "",
@@ -11906,26 +11836,6 @@
               "objectGroups": []
             }
           ],
-          "eventsFunctionsFolderStructure": {
-            "folderName": "__ROOT",
-            "children": [
-              {
-                "functionName": "doStepPreEvents"
-              },
-              {
-                "functionName": "UpdateLastDirection"
-              },
-              {
-                "functionName": "SimulateDashKey"
-              },
-              {
-                "functionName": "IsDashing"
-              },
-              {
-                "functionName": "AbortDash"
-              }
-            ]
-          },
           "propertyDescriptors": [
             {
               "value": "",
@@ -12094,11 +12004,8 @@
         {
           "description": "Resolve conflict between platformer character configuration changes.",
           "fullName": "Platformer character configuration stack",
-          "helpPath": "",
-          "iconUrl": "",
           "name": "PlatformerConfigurationStack",
           "objectType": "",
-          "previewIconUrl": "",
           "eventsFunctions": [
             {
               "fullName": "",
@@ -12733,41 +12640,6 @@
               "objectGroups": []
             }
           ],
-          "eventsFunctionsFolderStructure": {
-            "folderName": "__ROOT",
-            "children": [
-              {
-                "functionName": "onCreated"
-              },
-              {
-                "functionName": "RevertConfiguration"
-              },
-              {
-                "functionName": "UsualSetting"
-              },
-              {
-                "functionName": "UsualMaxSpeed"
-              },
-              {
-                "functionName": "ConfigureSetting"
-              },
-              {
-                "functionName": "ConfigureGravity"
-              },
-              {
-                "functionName": "ConfigureDeceleration"
-              },
-              {
-                "functionName": "ConfigureMaxSpeed"
-              },
-              {
-                "functionName": "ConfigureAcceleration"
-              },
-              {
-                "functionName": "ConfigureMaxFallSpeed"
-              }
-            ]
-          },
           "propertyDescriptors": [
             {
               "value": "",
