@@ -760,6 +760,21 @@
         "name": "NewSprite6",
         "smoothed": false,
         "userAdded": false
+      },
+      {
+        "file": "ChunkParty.ttf",
+        "kind": "font",
+        "metadata": "",
+        "name": "ChunkParty.ttf",
+        "userAdded": false
+      },
+      {
+        "file": "Gemini_Generated_Image_kaewj4kaewj4kaew-removebg-preview.png",
+        "kind": "image",
+        "metadata": "",
+        "name": "Gemini_Generated_Image_kaewj4kaewj4kaew-removebg-preview.png",
+        "smoothed": false,
+        "userAdded": false
       }
     ]
   },
@@ -773,6 +788,16 @@
       "name": "CollectedItems",
       "type": "number",
       "value": 0
+    },
+    {
+      "name": "CurrentLevel",
+      "type": "number",
+      "value": 1
+    },
+    {
+      "name": "TotalLevels",
+      "type": "number",
+      "value": 3
     }
   ],
   "layouts": [
@@ -798,7 +823,7 @@
         "gridColor": 10401023,
         "gridAlpha": 0.8,
         "snap": true,
-        "zoomFactor": 0.9610368693714736,
+        "zoomFactor": 0.993443349825959,
         "windowMask": false,
         "selectedLayer": "",
         "gameEditorMode": "instances-editor"
@@ -889,26 +914,9 @@
           "name": "UI_ItemsText",
           "persistentUuid": "a7ee23b9-a540-4db4-9bf6-b40def5d3839",
           "width": 0,
-          "x": 544,
+          "x": 669,
           "y": 47,
           "zOrder": 5,
-          "numberProperties": [],
-          "stringProperties": [],
-          "initialVariables": []
-        },
-        {
-          "angle": 0,
-          "customSize": true,
-          "depth": 3,
-          "height": 96,
-          "keepRatio": true,
-          "layer": "",
-          "name": "UI_collectible",
-          "persistentUuid": "489e1d8e-5c85-4b7e-a62f-0ea565008661",
-          "width": 96,
-          "x": 456,
-          "y": 51,
-          "zOrder": 6,
           "numberProperties": [],
           "stringProperties": [],
           "initialVariables": []
@@ -923,8 +931,8 @@
           "name": "UI_Lifes",
           "persistentUuid": "905ff95f-a658-44b4-8573-95722519ebce",
           "width": 200,
-          "x": 32,
-          "y": 13,
+          "x": 56,
+          "y": 28,
           "zOrder": 7,
           "numberProperties": [],
           "stringProperties": [],
@@ -1245,9 +1253,42 @@
           "name": "TimeScore",
           "persistentUuid": "ebe0231a-1e5d-4c1e-a2d6-cc7c4800c412",
           "width": 0,
-          "x": 1058,
-          "y": 44,
+          "x": 1024,
+          "y": 32,
           "zOrder": 9,
+          "numberProperties": [],
+          "stringProperties": [],
+          "initialVariables": []
+        },
+        {
+          "angle": 0,
+          "customSize": false,
+          "height": 0,
+          "keepRatio": true,
+          "layer": "",
+          "name": "LevelIndicator",
+          "persistentUuid": "c3e25f09-1a9c-46ad-a4f2-78fbe0bcd491",
+          "width": 0,
+          "x": 1024,
+          "y": 96,
+          "zOrder": 10,
+          "numberProperties": [],
+          "stringProperties": [],
+          "initialVariables": []
+        },
+        {
+          "angle": 36,
+          "customSize": true,
+          "depth": 1,
+          "height": 75,
+          "keepRatio": true,
+          "layer": "",
+          "name": "UI_key",
+          "persistentUuid": "49dd9d9d-9113-418d-9f06-9f1f30d59ddf",
+          "width": 113,
+          "x": 560,
+          "y": 42,
+          "zOrder": 11,
           "numberProperties": [],
           "stringProperties": [],
           "initialVariables": []
@@ -4257,8 +4298,8 @@
           "variables": [],
           "effects": [],
           "behaviors": [],
-          "string": "x0",
-          "font": "DePixelHalbfett.otf",
+          "string": "0",
+          "font": "ChunkParty.ttf",
           "textAlignment": "left",
           "characterSize": 50,
           "color": {
@@ -4280,8 +4321,8 @@
             "shadowOpacity": 127,
             "smoothed": true,
             "underlined": false,
-            "text": "x0",
-            "font": "DePixelHalbfett.otf",
+            "text": "0",
+            "font": "ChunkParty.ttf",
             "textAlignment": "left",
             "verticalTextAlignment": "top",
             "characterSize": 50,
@@ -4853,9 +4894,9 @@
           "effects": [],
           "behaviors": [],
           "string": "Tempo: 00:00",
-          "font": "DePixelHalbfett.otf",
+          "font": "ChunkParty.ttf",
           "textAlignment": "left",
-          "characterSize": 20,
+          "characterSize": 36,
           "color": {
             "b": 255,
             "g": 255,
@@ -4876,13 +4917,118 @@
             "smoothed": true,
             "underlined": false,
             "text": "Tempo: 00:00",
-            "font": "DePixelHalbfett.otf",
+            "font": "ChunkParty.ttf",
             "textAlignment": "left",
             "verticalTextAlignment": "top",
-            "characterSize": 20,
+            "characterSize": 36,
             "lineHeight": 0,
             "color": "255;255;255"
           }
+        },
+        {
+          "assetStoreId": "",
+          "bold": false,
+          "italic": false,
+          "name": "LevelIndicator",
+          "persistentUuid": "98b8168d-469f-4dc3-b959-d50352c971c4",
+          "smoothed": true,
+          "type": "TextObject::Text",
+          "underlined": false,
+          "variables": [],
+          "effects": [],
+          "behaviors": [],
+          "string": "Level 1/3",
+          "font": "ChunkParty.ttf",
+          "textAlignment": "left",
+          "characterSize": 36,
+          "color": {
+            "b": 255,
+            "g": 255,
+            "r": 255
+          },
+          "content": {
+            "bold": false,
+            "isOutlineEnabled": true,
+            "isShadowEnabled": false,
+            "italic": false,
+            "outlineColor": "0;0;0",
+            "outlineThickness": 2,
+            "shadowAngle": 90,
+            "shadowBlurRadius": 2,
+            "shadowColor": "0;0;0",
+            "shadowDistance": 4,
+            "shadowOpacity": 127,
+            "smoothed": true,
+            "underlined": false,
+            "text": "Level 1/3",
+            "font": "ChunkParty.ttf",
+            "textAlignment": "left",
+            "verticalTextAlignment": "top",
+            "characterSize": 36,
+            "lineHeight": 0,
+            "color": "255;255;255"
+          }
+        },
+        {
+          "adaptCollisionMaskAutomatically": true,
+          "assetStoreId": "",
+          "name": "UI_key",
+          "persistentUuid": "d4a0bbb3-0ad1-4675-8309-bb9fdd2a5461",
+          "type": "Sprite",
+          "updateIfNotVisible": false,
+          "variables": [],
+          "effects": [],
+          "behaviors": [],
+          "animations": [
+            {
+              "name": "",
+              "useMultipleDirections": false,
+              "directions": [
+                {
+                  "looping": false,
+                  "timeBetweenFrames": 0.08,
+                  "sprites": [
+                    {
+                      "hasCustomCollisionMask": true,
+                      "image": "Gemini_Generated_Image_kaewj4kaewj4kaew-removebg-preview.png",
+                      "points": [],
+                      "originPoint": {
+                        "name": "origine",
+                        "x": 0,
+                        "y": 0
+                      },
+                      "centerPoint": {
+                        "automatic": true,
+                        "name": "centre",
+                        "x": 0,
+                        "y": 0
+                      },
+                      "customCollisionMask": [
+                        [
+                          {
+                            "x": 192,
+                            "y": 24
+                          },
+                          {
+                            "x": 394,
+                            "y": 24
+                          },
+                          {
+                            "x": 394,
+                            "y": 411
+                          },
+                          {
+                            "x": 192,
+                            "y": 411
+                          }
+                        ]
+                      ]
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
         }
       ],
       "objectsFolderStructure": {
@@ -4913,6 +5059,9 @@
             "objectName": "UI_collectible"
           },
           {
+            "objectName": "UI_key"
+          },
+          {
             "objectName": "UI_Lifes"
           },
           {
@@ -4932,6 +5081,9 @@
           },
           {
             "objectName": "TimeScore"
+          },
+          {
+            "objectName": "LevelIndicator"
           }
         ]
       },
@@ -5009,6 +5161,23 @@
                 "Text",
                 "=",
                 "\"Tempo: \" + ToString(floor(TimerElapsedTime(\"tempoFase\")))"
+              ]
+            }
+          ]
+        },
+        {
+          "type": "BuiltinCommonInstructions::Standard",
+          "conditions": [],
+          "actions": [
+            {
+              "type": {
+                "value": "TextContainerCapability::TextContainerBehavior::SetValue"
+              },
+              "parameters": [
+                "LevelIndicator",
+                "Text",
+                "=",
+                "\"Level \" + ToString(GlobalVariable(CurrentLevel)) + \"/\" + ToString(GlobalVariable(TotalLevels))"
               ]
             }
           ]
